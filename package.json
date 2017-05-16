@@ -1,0 +1,26 @@
+{
+  "name": "editor-serlo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "katex": "^0.7.1",
+    "lodash.debounce": "^4.0.8",
+    "ory-editor": "^0.2.9",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-katex": "^1.1.0",
+    "react-tap-event-plugin": "^2.0.1",
+    "showdown": "^1.6.4",
+    "superagent": "^3.5.2",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

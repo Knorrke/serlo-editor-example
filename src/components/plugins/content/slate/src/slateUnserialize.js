@@ -10,12 +10,12 @@ import {BLOCKQUOTE} from 'ory-editor-plugins-slate/lib/plugins/blockquote'
 import {KATEX_BLOCK, KATEX_INLINE} from './plugins/katex'
 import {Html, Raw} from 'slate'
 
-const rules = [{
+const rules = [/*{
     deserialize: (el) => {
         console.log(el)
         return null
     }
-}, {
+}, */{
     deserialize: (el, next) => el.tagName === 'p' ? {
             kind: 'block',
             type: P,

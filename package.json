@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "katex": "^0.7.1",
     "lodash.debounce": "^4.0.8",
     "ory-editor": "^0.2.9",
@@ -15,7 +16,8 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "unexpected": "^10.29.0"
   },
   "scripts": {
     "start": "react-scripts start",

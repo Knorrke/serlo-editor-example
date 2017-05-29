@@ -1,7 +1,7 @@
 import KatexIcon from 'material-ui/svg-icons/editor/functions'
 import React from 'react'
 
-import { ToolbarButton } from 'ory-editor-ui'
+import { ToolbarButton } from 'ory-editor-plugins-slate/lib/helpers'
 import Plugin from 'ory-editor-plugins-slate/lib/plugins/Plugin'
 import KatexBlock from './block'
 import KatexInline from './inline'

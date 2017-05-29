@@ -67,7 +67,8 @@ const createPluginCell = (elem) => {
           },
           state: {
             alt: elem.alt,
-            src: elem.src
+            src: elem.src,
+            href: (elem.href) ? elem.href : undefined
           }
         }
       }

@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import {white, faintBlack} from 'material-ui/styles/colors'
-
 
 class Spoiler extends Component {
     state = {
@@ -14,17 +12,16 @@ class Spoiler extends Component {
     render() {
         const {children, state: {title}} = this.props
         return (
-            <div>
-                <div className="spoiler panel panel-default" onClick={this.onToggle}>
-                    <div className="spoiler-teaser panel-heading">
-                        <span class={this.state.hidden
+            <div className="spoiler panel panel-default" onClick={this.onToggle}>
+                <div className="spoiler-teaser panel-heading">
+                        <span className={this.state.hidden
                             ? "fa fa-caret-square-o-down"
                             : "fa fa-caret-square-o-up"
                         }/>
-                        { title }
-                    </div>
+                    { title }
                 </div>
-                <div className="content" style={{display: this.state.hidden ? 'none' : 'block'}}>
+
+                <div className="spoiler-content panel-body" style={{display: this.state.hidden ? 'none' : 'block'}}>
                     {children}
                 </div>
             </div>

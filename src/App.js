@@ -17,8 +17,6 @@ import KatexPlugin from './components/plugins/content/slate/src/plugins/katex'
 import {P} from 'ory-editor-plugins-slate/lib/plugins/paragraph'
 import slateUnserialize from './components/plugins/content/slate/src/slateUnserialize'
 
-import parallax from 'ory-editor-plugins-parallax-background' // A plugin for parallax background images
-import 'ory-editor-plugins-parallax-background/lib/index.css' // Stylesheets for parallax background images
 import spacer from 'ory-editor-plugins-spacer'
 import 'ory-editor-plugins-spacer/lib/index.css'
 import divider from 'ory-editor-plugins-divider'
@@ -44,7 +42,7 @@ const plugins = {
         divider,
         injection,
         geogebra], // Define plugins for content cells
-    layout: [parallax({ defaultPlugin: slate }), spoiler] // Define plugins for layout cells
+    layout: [spoiler] // Define plugins for layout cells
 }
 
 
@@ -62,7 +60,6 @@ class App extends Component {
                 <Editable
                     editor={editor}
                     id={content.id}
-                    onChange={console.log}
                 />
 
                 <div>

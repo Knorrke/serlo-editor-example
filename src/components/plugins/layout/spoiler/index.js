@@ -9,6 +9,8 @@ import Spoiler from './Component'
 import uuid from 'uuid'
 import Slate from 'ory-editor-plugins-slate'
 
+import './index.css'
+
 const defaultPlugin = new Slate()
 
 export default {

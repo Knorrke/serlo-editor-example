@@ -70,7 +70,8 @@ class Display extends Component {
         const {containerWidth} = this.props
         return (
             <div>
-                <iframe scrolling="no"
+                <iframe title={ this.props.state.src }
+                        scrolling="no"
                         src={ "https://www.geogebra.org/material/iframe/id/" + this.props.state.src }
                         width="100%"
                         height={ containerWidth * this.state.height / this.state.width }

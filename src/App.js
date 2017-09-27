@@ -8,11 +8,13 @@ import 'ory-editor-core/lib/index.css' // we also want to load the stylesheets
 // Require our ui components (optional). You can implement and use your own ui too!
 import { Trash, DisplayModeToggle, Toolbar } from 'ory-editor-ui'
 import 'ory-editor-ui/lib/index.css'
-require('react-tap-event-plugin')() // react-tap-event-plugin is required by material-ui which is used by ory-editor-ui so we need to call it here
-
+import {HTMLRenderer} from 'ory-editor-renderer'
 // Load some exemplary plugins:
-import slateFactory, { defaultPlugins as defaultSlatePlugins } from 'ory-editor-plugins-slate' // The rich text area plugin
+import slateFactory from 'ory-editor-plugins-slate' // The rich text area plugin
+import { defaultPlugins as defaultSlatePlugins } from 'ory-editor-plugins-slate'
+
 import 'ory-editor-plugins-slate/lib/index.css' // Stylesheets for the rich text area plugin
+
 import KatexPlugin from './components/plugins/content/slate/src/plugins/katex'
 import {P} from 'ory-editor-plugins-slate/lib/plugins/paragraph'
 import slateUnserialize from './components/plugins/content/slate/src/slateUnserialize'
@@ -28,10 +30,14 @@ import 'ory-editor-plugins-video/lib/index.css'
 import injection from './components/plugins/content/injection'
 import geogebra from './components/plugins/content/geogebra'
 import spoiler from './components/plugins/layout/spoiler'
+import table from './components/plugins/layout/table'
+
 import content from './components/content/content'
 
+require('react-tap-event-plugin')() // react-tap-event-plugin is required by material-ui which is used by ory-editor-ui so we need to call it here
 const slate = slateFactory([...defaultSlatePlugins, new KatexPlugin({P})])
-slate.unserialize = slateUnserialize;
+//const slate = slateFactory()
+//slate.unserialize = slateUnserialize;
 
 // Define which plugins we want to use. We only have slate and parallax available, so load those.
 const plugins = {
@@ -42,7 +48,10 @@ const plugins = {
         divider,
         injection,
         geogebra], // Define plugins for content cells
-    layout: [spoiler] // Define plugins for layout cells
+    layout: [
+        spoiler,
+        table,
+    ] // Define plugins for layout cells
 }
 
 
@@ -62,6 +71,10 @@ class App extends Component {
                     id={content.id}
                 />
 
+                {/*<HTMLRenderer
+                    state={content}
+                    plugins={plugins}
+                />*/}
                 <div>
                     <Trash editor={editor}/>
                     <DisplayModeToggle editor={editor}/>

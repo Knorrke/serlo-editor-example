@@ -1,7 +1,7 @@
 const contentSerlo =
   [[{
     "col": 24,
-    "content": "Aufgrund der [Kongruenzsätze](/1925) reicht es für die eindeutige Konstruktion eines Dreiecks aus, wenn man nur 3 Eigenschaften (also Längen der Seite oder Größe der Winkel) des Dreiecks kennt.\n\nEin Dreieck ist eindeutig konstruierbar, wenn man\n\n- die Längen aller 3 Seiten (SSS-Satz) oder\n\n- die Länge zweier Seiten und die Größe des von Ihnen eingeschlossenen Winkels (SWS-Satz) oder\n\n- die Länge einer Seite und die Größe der anliegenden Winkel (WSW-Satz) oder\n\n- die Längen zweier Seiten und die Größe des der längeren der beiden Seiten gegenüberliegenden Winkels (SsW-Satz)\n\nkennt."
+    "content": "Aufgrund der [Kongruenzsätze](/1925) reicht es für die eindeutige Konstruktion eines Dreiecks aus, wenn man nur **3 Eigenschaften** (also *Längen der Seite* oder *Größe der Winkel*) des Dreiecks kennt.\n\nEin Dreieck ist eindeutig konstruierbar, wenn man\n\n- die Längen aller 3 Seiten (SSS-Satz) oder\n\n- die Länge zweier Seiten und die Größe des von Ihnen eingeschlossenen Winkels (SWS-Satz) oder\n\n- die Länge einer Seite und die Größe der anliegenden Winkel (WSW-Satz) oder\n\n- die Längen zweier Seiten und die Größe des der längeren der beiden Seiten gegenüberliegenden Winkels (SsW-Satz)\n\nkennt."
   }], [{
     "col": 24,
     "content": "## Vorgehen bei der Konstrukion\n\nAls konkretes Beispiel wird jetzt gewählt: Konstruktion eines Dreiecks mit Seitenlängen %%a=3\\;cm;\\;\\;\\;b=\\;4\\;cm;\\;\\;c=\\;5\\;cm\\;%%"

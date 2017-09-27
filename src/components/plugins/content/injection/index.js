@@ -7,5 +7,5 @@ export default {
   name: 'serlo/content/injection',
   version: '0.0.1',
   IconComponent: <Panorama />,
-  text: 'Serlo Spoiler'
+  text: 'Serlo Injection'
 }

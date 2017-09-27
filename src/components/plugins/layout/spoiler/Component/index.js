@@ -12,8 +12,8 @@ class Spoiler extends Component {
     render() {
         const {children, state: {title}} = this.props
         return (
-            <div className="spoiler panel panel-default" onClick={this.onToggle}>
-                <div className="spoiler-teaser panel-heading">
+            <div className="spoiler">
+                <div className="spoiler-title" onClick={this.onToggle}>
                         <span className={this.state.hidden
                             ? "fa fa-caret-square-o-down"
                             : "fa fa-caret-square-o-up"
@@ -21,7 +21,7 @@ class Spoiler extends Component {
                     { title }
                 </div>
 
-                <div className="spoiler-content panel-body" style={{display: this.state.hidden ? 'none' : 'block'}}>
+                <div className="spoiler-content" style={{display: this.state.hidden ? 'none' : 'block'}}>
                     {children}
                 </div>
             </div>

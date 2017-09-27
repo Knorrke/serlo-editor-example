@@ -1,97 +1,46 @@
-const extractSpoilers = ({normalized, elements}) => {
+const extractSpoilers = (normalizedObj) => {
     const spoilerRegEx = new RegExp(/^\/\/\/ (.*)\n([\s\S]*?)(\n|\r)+\/\/\//m)
-
-    var match = spoilerRegEx.exec(normalized)
-    while (match !== null) {
-        normalized = normalized.replace(spoilerRegEx, '§' + elements.length + '§')
-
-        elements = [...elements, {
-            name: 'spoiler',
-            title: match[1],
-            content: normalizeMarkdown(match[2])
-        }]
-
-        match = spoilerRegEx.exec(normalized)
-    }
-    return {
-        normalized: normalized,
-        elements: elements
-    }
+    return extract(spoilerRegEx, (match) => ({
+        name: 'spoiler',
+        title: match[1],
+        content: normalizeMarkdown(match[2])
+    }), normalizedObj)
 }
 
-const extractInjections = ({normalized, elements}) => {
+const extractInjections = (normalizedObj) => {
     const injectionRegEx = new RegExp(/>\[(.*)\]\(((?!ggt\/).*)\)/)
-    var match = injectionRegEx.exec(normalized)
-    while (match !== null) {
-        normalized = normalized.replace(injectionRegEx, '§' + elements.length + '§')
-        elements = [...elements, {
-            name: 'injection',
-            alt: match[1],
-            src: match[2]
-        }]
-
-        match = injectionRegEx.exec(normalized)
-    }
-    return {
-        normalized: normalized,
-        elements: elements
-    }
+    return extract(injectionRegEx, (match) => ({
+        name: 'injection',
+        alt: match[1],
+        src: match[2]
+    }), normalizedObj)
 }
 
-const extractGeogebra = ({normalized, elements}) => {
+const extractGeogebra = (normalizedObj) => {
     const geogebraInjectionRegEx = new RegExp(/>\[(.*)\]\(ggt\/(.*)\)/)
-    var match = geogebraInjectionRegEx.exec(normalized)
-    while (match !== null) {
-        normalized = normalized.replace(geogebraInjectionRegEx, '§' + elements.length + '§')
-        elements = [...elements, {
-            name: 'geogebra',
-            alt: match[1],
-            src: match[2]
-        }]
-
-        match = geogebraInjectionRegEx.exec(normalized)
-    }
-
-    return {
-        normalized: normalized,
-        elements: elements
-    }
+    return extract(geogebraInjectionRegEx, (match) => ({
+        name: 'geogebra',
+        alt: match[1],
+        src: match[2]
+    }), normalizedObj)
 }
-const extractLinkedImages = ({normalized, elements}) => {
+
+const extractLinkedImages = (normalizedObj) => {
     const linkedImagesRegEx = new RegExp(/\[!\[(.*?)\]\((.*?)\)\]\((.*?)\)/)
-    var match = linkedImagesRegEx.exec(normalized)
-    while (match !== null) {
-        normalized = normalized.replace(linkedImagesRegEx, '§' + elements.length + '§')
-        elements = [...elements, {
-            name: 'image',
-            alt: match[1],
-            src: match[2],
-            href: match[3]
-        }]
-        match = linkedImagesRegEx.exec(normalized)
-    }
-    return {
-        normalized: normalized,
-        elements: elements
-    }
+    return extract(linkedImagesRegEx, (match) => ({
+        name: 'image',
+        alt: match[1],
+        src: match[2],
+        href: match[3]
+    }), normalizedObj)
 }
-const extractImages = ({normalized, elements}) => {
+const extractImages = (normalizedObj) => {
     const imagesRegEx = new RegExp(/!\[(.*?)\]\((.*?)\)/)
-    var match = imagesRegEx.exec(normalized)
-    while (match !== null) {
-        normalized = normalized.replace(imagesRegEx, '§' + elements.length + '§')
-        elements = [...elements, {
-            name: 'image',
-            alt: match[1],
-            src: match[2]
-        }]
-
-        match = imagesRegEx.exec(normalized)
-    }
-    return {
-        normalized: normalized,
-        elements: elements
-    }
+    return extract(imagesRegEx, (match) => ({
+        name: 'image',
+        alt: match[1],
+        src: match[2]
+    }), normalizedObj)
 }
 
 const normalizeMarkdown = (markdown) => {
@@ -106,6 +55,20 @@ const normalizeMarkdown = (markdown) => {
     normalizedObj = extractImages(normalizedObj)
 
     return normalizedObj
+}
+
+const extract = (regex, createElement, {normalized, elements}) => {
+    let match = regex.exec(normalized);
+    while (match !== null) {
+        normalized = normalized.replace(regex, '§' + elements.length + '§')
+        elements = [...elements, createElement(match)]
+
+        match = regex.exec(normalized)
+    }
+    return {
+        normalized: normalized,
+        elements: elements
+    }
 }
 
 export default normalizeMarkdown

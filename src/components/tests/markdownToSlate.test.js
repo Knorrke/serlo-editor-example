@@ -32,7 +32,7 @@ const cases = [
                   cells: [{
                     content: {
                       plugin: {
-                        name: 'ory/editor/core/content/image'
+                        name: 'serlo/content/image'
                       },
                       state: {
                         alt: 'image',
@@ -79,7 +79,7 @@ const cases = [
                   cells: [{
                     content: {
                       plugin: {
-                        name: 'ory/editor/core/content/image'
+                        name: 'serlo/content/image'
                       },
                       state: {
                         alt: 'image',

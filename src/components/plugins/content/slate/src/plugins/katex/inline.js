@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { InlineMath } from 'react-katex'
 
 const Inline = ({ attributes, children, node }) => {
@@ -11,14 +11,6 @@ const Inline = ({ attributes, children, node }) => {
       {children}
     </span>
   )
-}
-
-Inline.propTypes = {
-  attributes: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.func, PropTypes.element, PropTypes.array]).isRequired,
-  node: PropTypes.shape({
-    data: PropTypes.any
-  })
 }
 
 export default Inline

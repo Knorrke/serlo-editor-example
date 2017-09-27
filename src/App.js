@@ -11,13 +11,12 @@ import 'ory-editor-ui/lib/index.css'
 import {HTMLRenderer} from 'ory-editor-renderer'
 // Load some exemplary plugins:
 import slateFactory from 'ory-editor-plugins-slate' // The rich text area plugin
-import { defaultPlugins as defaultSlatePlugins } from 'ory-editor-plugins-slate'
+import { defaultPlugins as defaultSlatePlugins } from 'ory-editor-plugins-slate/lib/hooks'
 
 import 'ory-editor-plugins-slate/lib/index.css' // Stylesheets for the rich text area plugin
 
 import KatexPlugin from './components/plugins/content/slate/src/plugins/katex'
 import {P} from 'ory-editor-plugins-slate/lib/plugins/paragraph'
-import slateUnserialize from './components/plugins/content/slate/src/slateUnserialize'
 
 import spacer from 'ory-editor-plugins-spacer'
 import 'ory-editor-plugins-spacer/lib/index.css'
@@ -36,8 +35,6 @@ import content from './components/content/content'
 
 require('react-tap-event-plugin')() // react-tap-event-plugin is required by material-ui which is used by ory-editor-ui so we need to call it here
 const slate = slateFactory([...defaultSlatePlugins, new KatexPlugin({P})])
-//const slate = slateFactory()
-//slate.unserialize = slateUnserialize;
 
 // Define which plugins we want to use. We only have slate and parallax available, so load those.
 const plugins = {
@@ -71,10 +68,6 @@ class App extends Component {
                     id={content.id}
                 />
 
-                {/*<HTMLRenderer
-                    state={content}
-                    plugins={plugins}
-                />*/}
                 <div>
                     <Trash editor={editor}/>
                     <DisplayModeToggle editor={editor}/>

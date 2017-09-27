@@ -72,13 +72,14 @@ export default class KatexPlugin extends Plugin {
     name = 'katex'
 
     nodes = {
-        //[KATEX_BLOCK]: KatexBlock,
-        //[KATEX_INLINE]: KatexInline
+        [KATEX_BLOCK]: KatexBlock,
+        [KATEX_INLINE]: KatexInline
     }
 
     toolbarButtons = [this.Button]
 
     deserialize = (el, next) => {
+        console.log('deserializing', el);
         switch (el.tagName.toLowerCase()) {
             case 'katexblock':
                 return {
@@ -86,7 +87,7 @@ export default class KatexPlugin extends Plugin {
                     type: KATEX_BLOCK,
                     isVoid: true,
                     data: {
-                        formula: el.childNodes[0].data
+                        formula: el.children[0].data
                     }
                 }
             case 'katexinline':
@@ -95,13 +96,14 @@ export default class KatexPlugin extends Plugin {
                     type: KATEX_INLINE,
                     isVoid: true,
                     data: {
-                        formula: el.childNodes[0].data
+                        formula: el.children[0].data
                     }
                 }
         }
     }
 
     serialize = (object, children) => {
+        console.log('serializing', object);
         if (object.kind !== 'block') {
             return
         }

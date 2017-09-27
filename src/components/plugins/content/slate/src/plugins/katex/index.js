@@ -87,7 +87,7 @@ export default class KatexPlugin extends Plugin {
                     type: KATEX_BLOCK,
                     isVoid: true,
                     data: {
-                        formula: el.children[0].data
+                        formula: el.childNodes[0].value
                     }
                 }
             case 'katexinline':
@@ -96,7 +96,7 @@ export default class KatexPlugin extends Plugin {
                     type: KATEX_INLINE,
                     isVoid: true,
                     data: {
-                        formula: el.children[0].data
+                        formula: el.childNodes[0].value
                     }
                 }
         }

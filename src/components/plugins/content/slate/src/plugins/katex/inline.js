@@ -1,13 +1,17 @@
 import React from 'react'
-import { InlineMath } from 'react-katex'
+import MathComponent from './mathComponent'
+import Form from './Form'
+import 'katex/dist/katex.min.css'
 
-const Inline = ({ attributes, children, node }) => {
+const Inline = (props) => {
+  const { attributes, children, node } = props
   const { data } = node
   const formula = data.get('formula')
 
   return (
     <span {...attributes}>
-      <InlineMath math={formula} />
+      <MathComponent formula={formula} inline/>
+      <Form formula={formula} {...props}/>
       {children}
     </span>
   )

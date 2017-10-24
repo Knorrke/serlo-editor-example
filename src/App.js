@@ -17,6 +17,7 @@ import 'ory-editor-plugins-slate/lib/index.css' // Stylesheets for the rich text
 
 import KatexPlugin from './components/plugins/content/slate/src/plugins/katex'
 import {P} from 'ory-editor-plugins-slate/lib/plugins/paragraph'
+import { unserialize as slateUnserialize } from './components/plugins/content/slate/src/slateUnserialize'
 
 import spacer from 'ory-editor-plugins-spacer'
 import 'ory-editor-plugins-spacer/lib/index.css'
@@ -35,6 +36,7 @@ import content from './components/content/content'
 
 require('react-tap-event-plugin')() // react-tap-event-plugin is required by material-ui which is used by ory-editor-ui so we need to call it here
 const slate = slateFactory([...defaultSlatePlugins, new KatexPlugin({P})])
+slate.unserialize = slateUnserialize;
 
 // Define which plugins we want to use. We only have slate and parallax available, so load those.
 const plugins = {
